@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Employee list company</h5>
+                <p class="card-text">The list of employees contains: name, surname, patronymic, date of employment, current position and company.</p>
+                <a asp-controller="Employee" asp-action="Index" class="btn btn-outline-info">Info about employees</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Company list</h5>
+                <p class="card-text">The list of companies contains: the name of the company, form of organization, the number of employees.</p>
+                <a asp-controller="Company" asp-action="Index" class="btn btn-outline-info">Info about companies</a>
+            </div>
+        </div>
+    </div>
+</div>

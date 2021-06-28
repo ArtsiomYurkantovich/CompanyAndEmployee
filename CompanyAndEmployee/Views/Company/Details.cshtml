@@ -1,0 +1,79 @@
+﻿@model DataLayer.Entities.Company
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<style>
+    .header-h1 h1 {
+        position: relative;
+        padding-bottom: .5rem;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        text-align: center;
+        color: #8FBC8F;
+    }
+
+        .header-h1 h1::before {
+            content: "";
+            position: absolute;
+            border-bottom: 2px solid #8FBC8F;
+            bottom: .25rem;
+            left: 60%;
+            width: 30%;
+            transform: translateX(-50%);
+        }
+
+        .header-h1 h1::after {
+            content: "";
+            position: absolute;
+            border-bottom: 2px solid #8FBC8F;
+            bottom: 0;
+            left: 50%;
+            width: 15%;
+            transform: translateX(-50%);
+        }
+
+    .header-h1-left h1 {
+        text-align: left;
+    }
+
+        .header-h1-left h1::before,
+        .header-h1-left h1::after {
+            left: 0;
+            transform: translateX(0);
+        }
+</style>
+<div class="header-h1 header-h1-left">
+    <h1>INFORMATION ABOUT COMPANY</h1>
+    <h3></h3>
+    <h4>@Model.Name</h4>
+</div>
+<dl class="row">
+    <dt class="col-sm-3">
+        @Html.DisplayNameFor(model => model.Name)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Name)
+    </dd>
+    <dt class="col-sm-3">
+        @Html.DisplayNameFor(model => model.Size)
+    </dt>
+    <dd class="col-sm-10">
+
+        @Html.DisplayFor(model => model.Size)
+
+
+    </dd>
+    <dt class="col-sm-3">
+        @Html.DisplayNameFor(model => model.FormOfOrganization)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.FormOfOrganization)
+    </dd>
+</dl>
+
+<div>
+    <input type="hidden" asp-for="Id" />
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</div>

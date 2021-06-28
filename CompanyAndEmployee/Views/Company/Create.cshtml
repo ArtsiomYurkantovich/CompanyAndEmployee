@@ -1,0 +1,89 @@
+﻿@model DataLayer.Entities.Company
+
+@{
+    ViewData["Title"] = "Create";
+}
+<style>
+    .header-h1 h1 {
+        position: relative;
+        padding-bottom: .5rem;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        text-align: center;
+        color: #4682B4;
+    }
+
+        .header-h1 h1::before {
+            content: "";
+            position: absolute;
+            border-bottom: 2px solid #4682B4;
+            bottom: .25rem;
+            left: 50%;
+            width: 30%;
+            transform: translateX(-50%);
+        }
+
+        .header-h1 h1::after {
+            content: "";
+            position: absolute;
+            border-bottom: 2px solid #4682B4;
+            bottom: 0;
+            left: 50%;
+            width: 15%;
+            transform: translateX(-50%);
+        }
+
+    .header-h1-left h1 {
+        text-align: left;
+    }
+
+        .header-h1-left h1::before,
+        .header-h1-left h1::after {
+            left: 0;
+            transform: translateX(0);
+        }
+</style>
+<div class="header-h1 header-h1-left">
+    <h1>ADD NEW COMPANY</h1>
+</div>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                @if (ViewBag.Message != null && ViewBag.Message == "Exist")
+                {
+                    <span style="color:red">Company name alredy is exist</span>
+                }
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Size" class="control-label"></label>
+                <input asp-for="Size" class="form-control" />
+                <span asp-validation-for="Size" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FormOfOrganization" class="control-label"></label>
+                @Html.DropDownList("FormOfOrganization", new List<SelectListItem>
+   {
+   new SelectListItem { Text = "Sole Proprietorship", Value = "Sole Proprietorship"},
+   new SelectListItem { Text = "Partnership", Value="Partnership" },
+   new SelectListItem { Text = "Corporation", Value="Corporation" },
+   new SelectListItem { Text = "Limited Liability Company", Value="Limited Liability Company" }
+
+   }, "Select Form Of Organization", new { @class = "form-control" })
+                <span asp-validation-for="FormOfOrganization" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-secondary">Back</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
